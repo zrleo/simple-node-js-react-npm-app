@@ -1,15 +1,17 @@
 pipeline {
-  agent {
-    docker {
-      image 'node:6'
-      args '-p 3000:3000'
-    }
-
-  }
+  agent none
   stages {
     stage('Bulid') {
       steps {
         sh 'npm install'
+      }
+    }
+    stage('Test') {
+      environment {
+        CI = 'True'
+      }
+      steps {
+        sh './jenkins/scripts/test.sh'
       }
     }
   }
