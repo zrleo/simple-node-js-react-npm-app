@@ -6,13 +6,5 @@ pipeline {
         sh 'npm install'
       }
     }
-    stage('Test') {
-      environment {
-        CI = 'True'
-      }
-      steps {
-        sh 'echo "test"'
-      }
-    }
   }
 }
